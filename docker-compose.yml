@@ -1,0 +1,24 @@
+version: '3.8'
+services: 
+    native_instruments_shop:
+        build: 
+            context: .
+            dockerfile: .docker/Dockerfile
+        image: 'native_instruments_shop'
+        volumes:
+            - ./:/var/www/html
+        ports:
+            - 80:80
+        depends_on:
+            - native_instruments_db_host
+
+    native_instruments_db_host:
+        image: mysql:8.0
+        restart: always
+        environment: 
+            MYSQL_DATABASE: native_instruments_db
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+            - ./storage/dbdata:/var/lib/mysql
+        ports:
+            - 3307:3306
