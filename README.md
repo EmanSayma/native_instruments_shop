@@ -25,17 +25,17 @@ This project is a product service with an HTTP API for products and users and th
 | POST /logout                 | logout user                     |
 
 
-- Public routes 
-GET /products         
-POST /register
-POST /auth
+* Public routes 
+- GET /products         
+- POST /register
+- POST /auth
 
-- Protected routes
-GET /user
-GET /user/products
-POST /user/products
-DELETE /products /{SKU}
-POST /logout 
+* Protected routes
+- GET /user
+- GET /user/products
+- POST /user/products
+- DELETE /products /{SKU}
+- POST /logout 
 
 ## Local Setup and Testing the APIs
 ### Local Setup using Docker
@@ -124,3 +124,8 @@ or
 ./vendor/bin/phpunit
 ```
 
+Note: if you faced any problem with the migrations just fresh the migrations and seed the data again 
+```
+php artisan migrate:fresh
+php artisan db:seed
+```
